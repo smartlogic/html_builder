@@ -6,4 +6,5 @@ group :test do
   gem "rake"
   gem "rspec"
   gem "aruba"
+  gem "cane"
 end
