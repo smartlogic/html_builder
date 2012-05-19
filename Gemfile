@@ -2,5 +2,8 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "rspec"
-gem "aruba"
+group :test do
+  gem "rake"
+  gem "rspec"
+  gem "aruba"
+end
