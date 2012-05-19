@@ -7,4 +7,5 @@ group :test do
   gem "rspec"
   gem "aruba"
   gem "cane"
+  gem "simplecov", :require => false
 end

@@ -9,6 +9,7 @@ Cucumber::Rake::Task.new(:cucumber)
 Cane::RakeTask.new(:quality) do |cane|
   cane.abc_max = 10
   cane.style_measure = 72
+  cane.add_threshold 'coverage/covered_percent', :>=, 100
   cane.no_doc = true
 end
 
