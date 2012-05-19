@@ -1,5 +1,5 @@
 # Min classes convert any interface-abiding instance into the minimal
-# interface-abiding instance. Min classes exists to enforce the minimal
+# interface-abiding instance. Min classes exist to enforce the minimal
 # contracts in tests. Do not add behavior to Min classes.
 
 module Min
