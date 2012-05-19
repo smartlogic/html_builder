@@ -10,3 +10,8 @@ Aruba.configure do |config|
     set_env("JAVA_OPTS", "-d32 #{ENV["JAVA_OPTS"]}")
   end
 end if RUBY_PLATFORM == "java"
+
+# JRuby is still slow, though, so bump timeout limit
+Before do
+  @aruba_timeout_seconds = 5
+end
