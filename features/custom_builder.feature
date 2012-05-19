@@ -2,7 +2,7 @@ Feature: Custom Builders
 
   Scenario: Defining a custom builder
     Given a file named "custom_builder.rb" with:
-    """
+    """ruby
     require "html/builder"
     require "html/tag"
     require "html/list"
@@ -27,6 +27,6 @@ Feature: Custom Builders
     """
     When I run `ruby custom_builder.rb`
     Then the output should contain exactly:
-    """
+    """html
     <ul><li>1</li><li>2</li></ul><p>&copy; 2012 Foo, Inc.</p>
     """
