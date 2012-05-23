@@ -1,6 +1,7 @@
 require "html"
 require "html/tag"
 require "html/list"
+require "html/map"
 
 module HTML
   class Table < Struct.new(:data)
@@ -24,7 +25,7 @@ module HTML
     def to_html
       return "" unless data.respond_to?(:rows)
       HTML.build(data.rows) do |rows|
-        tag(:tbody, rows.map { |cols| tr(cols) })
+        tag(:tbody, map(:tr, rows))
       end
     end
   end
