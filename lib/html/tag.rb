@@ -6,7 +6,7 @@ module HTML
     end
 
     def to_html
-      content = [*@content].map(&:to_s).join
+      content = [*@content].join
       "<#{@tag}>#{content}</#{@tag}>"
     end
   end
