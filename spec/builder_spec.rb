@@ -22,16 +22,10 @@ describe HTML::Builder do
     output.should eq("foo+bar")
   end
 
-  it "has a convenience method for building html" do
-    output = HTML::Builder.build(nil, Dummy) do
-      foo_bar(foo("foo"), "bar")
-    end
-    output.should eq("foo+bar")
-  end
-
   it "will inject an object into its scope as a block parameter" do
     object = stub(:foo => "foo", :baz => "baz")
-    output = HTML::Builder.build(object, Dummy) do |obj|
+    html = HTML::Builder.new(object, Dummy)
+    output = html.build do |obj|
       foo_bar(foo(obj.foo), foo_bar("bar", obj.baz))
     end
     output.should eq("foo+bar+baz")

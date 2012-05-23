@@ -1,10 +1,6 @@
 module HTML
   class Builder < BasicObject
-    def self.build(object = nil, namespace = ::HTML, &block)
-      new(object, namespace).build(&block)
-    end
-
-    def initialize(object = nil, namespace = ::HTML)
+    def initialize(object, namespace)
       @namespace = namespace
       @object = object
     end

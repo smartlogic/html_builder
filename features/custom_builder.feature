@@ -3,7 +3,7 @@ Feature: Custom Builders
   Scenario: Defining a custom builder
     Given a file named "custom_builder.rb" with:
     """ruby
-    require "html/builder"
+    require "html"
     require "html/tag"
     require "html/list"
 
@@ -19,7 +19,7 @@ Feature: Custom Builders
       end
     end
 
-    output = HTML::Builder.build do
+    output = HTML.build do
       list(:p, [1, 2]) + footer("Foo, Inc.", 2012)
     end
 
