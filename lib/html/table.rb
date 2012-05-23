@@ -13,7 +13,7 @@ module HTML
 
   class Thead < Struct.new(:data)
     def to_html
-      return "" unless data && data.respond_to?(:columns)
+      return "" unless data.respond_to?(:columns)
       Builder.build(data.columns) do |cols|
         tag(:thead, tr(cols))
       end
@@ -22,7 +22,7 @@ module HTML
 
   class Tbody < Struct.new(:data)
     def to_html
-      return "" unless data && data.respond_to?(:rows)
+      return "" unless data.respond_to?(:rows)
       Builder.build(data.rows) do |rows|
         tag(:tbody, rows.map { |cols| tr(cols) })
       end
