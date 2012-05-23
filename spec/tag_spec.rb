@@ -15,4 +15,10 @@ describe HTML::Tag do
     html = HTML::Tag.new(tag, enum).to_html
     html.should eq("<p>22</p>")
   end
+
+  it "optionally adds attributes from a hash" do
+    attrs = { :foo => "bar" }
+    html = HTML::Tag.new(tag, nil, attrs).to_html
+    html.should eq(%{<p foo="bar"></p>})
+  end
 end
