@@ -31,7 +31,7 @@ module HTML
   class Tr < Struct.new(:columns)
     def to_html
       Builder.build(columns) do |cols|
-        tag(:tr, cols.map { |col| tag(:td, col) })
+        tag(:tr, list(:td, cols))
       end
     end
   end

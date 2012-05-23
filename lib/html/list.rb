@@ -3,14 +3,13 @@ require "html/tag"
 
 module HTML
   class List
-    def initialize(enum)
+    def initialize(tag, enum)
+      @tag = tag
       @enum = enum
     end
 
     def to_html
-      Builder.build(@enum) do |enum|
-        tag(:ul, enum.map { |item| tag(:li, item) })
-      end
+      @enum.map { |item| Tag.new(@tag, item).to_html }.join
     end
   end
 end
