@@ -1,3 +1,4 @@
+require "html/list"
 require "html/tag"
 require "html/builder"
 

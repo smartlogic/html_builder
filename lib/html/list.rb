@@ -1,4 +1,3 @@
-require "html/builder"
 require "html/tag"
 
 module HTML
