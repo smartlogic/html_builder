@@ -1,16 +1,17 @@
 module HTML
   class Builder < BasicObject
-    def self.build(namespace = ::HTML, &block)
-      new(namespace).build(&block)
+    def self.build(object = nil, namespace = ::HTML, &block)
+      new(object, namespace).build(&block)
     end
 
-    def initialize(namespace = ::HTML)
+    def initialize(object = nil, namespace = ::HTML)
       @namespace = namespace
+      @object = object
     end
 
     def build(&block)
       if block.arity > 0
-        yield self
+        instance_exec(@object, &block)
       else
         instance_eval(&block)
       end

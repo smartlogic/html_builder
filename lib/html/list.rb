@@ -1,6 +1,5 @@
 require "html/builder"
 require "html/tag"
-require "html/sequence"
 
 module HTML
   class List
@@ -9,8 +8,8 @@ module HTML
     end
 
     def to_html
-      Builder.build do |html|
-        html.tag(:ul, html.sequence(:li, @enum))
+      Builder.build(@enum) do |enum|
+        tag(:ul, enum.map { |item| tag(:li, item) })
       end
     end
   end

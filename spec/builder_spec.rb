@@ -17,20 +17,20 @@ end
 
 describe HTML::Builder do
   it "provides a fluent builder for html" do
-    html = HTML::Builder.new(Dummy)
+    html = HTML::Builder.new(nil, Dummy)
     output = html.build { foo_bar(foo("foo"), "bar") }
     output.should eq("foo+bar")
   end
 
   it "has a convenience method for building html" do
-    output = HTML::Builder.build(Dummy) { foo_bar(foo("foo"), "bar") }
+    output = HTML::Builder.build(nil, Dummy) { foo_bar(foo("foo"), "bar") }
     output.should eq("foo+bar")
   end
 
-  it "will not hijack the block scope if asked to yield a parameter" do
-    foo, baz = "foo", "baz"
-    output = HTML::Builder.build(Dummy) do |h|
-      h.foo_bar(h.foo(foo), h.foo_bar("bar", baz))
+  it "will inject a provided object into its scope as a block parameter" do
+    object = stub(:foo => "foo", :baz => "baz")
+    output = HTML::Builder.build(object, Dummy) do |obj|
+      foo_bar(foo(obj.foo), foo_bar("bar", obj.baz))
     end
     output.should eq("foo+bar+baz")
   end
